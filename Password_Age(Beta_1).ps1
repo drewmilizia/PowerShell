@@ -1,6 +1,6 @@
 $user = Read-Host "Enter username"
 $getuser = get-ADUser -Identity $user -Properties *
-$pls = get-ADUser $user -properties * | Select-Object -ExpandProperty PasswordLastSet
+$pls = (get-ADUser $user -properties PasswordLastSet).PasswordLastSet
 $date = Get-Date -Format G
 $begin = [datetime]$pls
 $end = [datetime]$date
